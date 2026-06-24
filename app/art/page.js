@@ -131,7 +131,7 @@ export default function ArtPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Art curriculum develops students' creativity and artistic skills. Through practical 
+                  Our Art curriculum develops students&apos; creativity and artistic skills. Through practical 
                   work and art history study, students learn to express themselves visually and develop 
                   their understanding of art from different cultures and periods.
                 </p>

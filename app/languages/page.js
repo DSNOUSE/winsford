@@ -115,7 +115,7 @@ export default function LanguagesPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Languages curriculum develops students' ability to communicate effectively in 
+                  Our Languages curriculum develops students&apos; ability to communicate effectively in 
                   foreign languages while fostering cultural understanding. Through the study of 
                   vocabulary, grammar and culture, students become confident global citizens.
                 </p>

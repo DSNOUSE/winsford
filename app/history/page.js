@@ -115,7 +115,7 @@ export default function HistoryPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our History curriculum develops students' understanding of the past and its impact on 
+                  Our History curriculum develops students&apos; understanding of the past and its impact on 
                   the present. Through the study of different periods and events, students develop critical 
                   thinking, analysis skills and historical literacy.
                 </p>

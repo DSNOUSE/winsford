@@ -112,7 +112,7 @@ export default function GeographyPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Geography curriculum develops students' understanding of the world around them. 
+                  Our Geography curriculum develops students&apos; understanding of the world around them. 
                   Through the study of physical and human geography, students learn about the complex 
                   relationships between people and their environments.
                 </p>

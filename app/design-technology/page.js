@@ -133,7 +133,7 @@ export default function DesignTechnologyPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Design & Technology curriculum develops students' creativity and practical skills. 
+                  Our Design & Technology curriculum develops students&apos; creativity and practical skills. 
                   Through designing and making products, students learn about materials, processes, 
                   and the impact of technology on society.
                 </p>

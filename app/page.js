@@ -190,7 +190,7 @@ export default function HomePage() {
                 <div className="w-20 h-1 bg-red mb-6"></div>
                 <p className="text-lg text-gray-700 mb-6">
                   At Winsford Schools, we are committed to providing outstanding education that nurtures 
-                  every student's potential. Our dedicated staff work tirelessly to ensure academic progress 
+                  every student&apos;s potential. Our dedicated staff work tirelessly to ensure academic progress 
                   while fostering personal development in a supportive environment.
                 </p>
                 <p className="text-lg text-gray-700 mb-8">

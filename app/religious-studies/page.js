@@ -113,7 +113,7 @@ export default function ReligiousStudiesPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Religious Studies curriculum develops students' understanding of different religious 
+                  Our Religious Studies curriculum develops students&apos; understanding of different religious 
                   beliefs and practices. Through the study of world religions and ethical issues, students 
                   develop respect, tolerance and critical thinking skills.
                 </p>

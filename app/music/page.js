@@ -133,7 +133,7 @@ export default function MusicPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Music curriculum develops students' musical abilities through performing, composing 
+                  Our Music curriculum develops students&apos; musical abilities through performing, composing 
                   and listening. Students learn to read music, play instruments, compose their own pieces 
                   and appreciate music from different cultures and periods.
                 </p>

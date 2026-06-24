@@ -115,7 +115,7 @@ export default function PESportPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our PE & Sport Sciences curriculum develops students' physical literacy and sporting 
+                  Our PE & Sport Sciences curriculum develops students&apos; physical literacy and sporting 
                   abilities. Through practical activities and theoretical study, students learn about 
                   the importance of physical activity, health and sports science.
                 </p>

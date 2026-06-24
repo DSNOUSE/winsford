@@ -19,6 +19,35 @@ export default function StudentDatabase() {
   const secondaryClasses = ['JSS 1', 'JSS 2', 'JSS 3A', 'JSS 3B', 'SS 1', 'SS 2']
 
   useEffect(() => {
+    const fetchStudents = async () => {
+      setLoading(true)
+      try {
+        let url = '/api/students'
+        const params = new URLSearchParams()
+        
+        if (section !== 'all') {
+          params.append('section', section)
+        }
+        
+        if (classFilter) {
+          params.append('class', classFilter)
+        }
+        
+        if (params.toString()) {
+          url += `?${params.toString()}`
+        }
+
+        const response = await fetch(url)
+        const data = await response.json()
+        setStudents(data.students)
+        setFilteredStudents(data.students)
+      } catch (error) {
+        console.error('Error fetching students:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchStudents()
   }, [section, classFilter])
 
@@ -33,35 +62,6 @@ export default function StudentDatabase() {
       setFilteredStudents(students)
     }
   }, [searchTerm, students])
-
-  const fetchStudents = async () => {
-    setLoading(true)
-    try {
-      let url = '/api/students'
-      const params = new URLSearchParams()
-      
-      if (section !== 'all') {
-        params.append('section', section)
-      }
-      
-      if (classFilter) {
-        params.append('class', classFilter)
-      }
-      
-      if (params.toString()) {
-        url += `?${params.toString()}`
-      }
-
-      const response = await fetch(url)
-      const data = await response.json()
-      setStudents(data.students)
-      setFilteredStudents(data.students)
-    } catch (error) {
-      console.error('Error fetching students:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleSectionChange = (newSection) => {
     setSection(newSection)

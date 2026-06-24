@@ -147,7 +147,7 @@ export default function EnglishPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our English curriculum develops students' ability to read, write and communicate effectively. 
+                  Our English curriculum develops students&apos; ability to read, write and communicate effectively. 
                   Through the study of literature, students develop critical thinking and analytical skills 
                   while fostering a love for reading and creative expression.
                 </p>

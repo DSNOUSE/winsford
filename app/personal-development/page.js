@@ -112,7 +112,7 @@ export default function PersonalDevelopmentPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Personal Development curriculum supports students' emotional and social growth. 
+                  Our Personal Development curriculum supports students&apos; emotional and social growth. 
                   Through the development of key life skills, students become confident, resilient 
                   individuals prepared for the challenges of modern life.
                 </p>

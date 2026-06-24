@@ -53,7 +53,7 @@ export default function MathematicsPage() {
           <ul className="list-disc pl-5 mb-4 space-y-1">
             <li>Circles and compound shapes</li>
             <li>Volume and surface area</li>
-            <li>Pythagoras' theorem</li>
+            <li>Pythagoras&apos; theorem</li>
             <li>Similarity and congruence</li>
             <li>3D shapes and their properties</li>
           </ul>

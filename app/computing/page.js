@@ -132,7 +132,7 @@ export default function ComputingPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Computing curriculum develops students' digital literacy and programming skills. 
+                  Our Computing curriculum develops students&apos; digital literacy and programming skills. 
                   Through the study of computer science, digital safety and practical IT skills, students 
                   become confident users of technology and prepare for the digital world.
                 </p>

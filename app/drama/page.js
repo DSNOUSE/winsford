@@ -115,7 +115,7 @@ export default function DramaPage() {
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Curriculum Overview</h2>
                 <p className="text-gray-600 mb-6">
-                  Our Drama curriculum develops students' creativity, confidence and communication skills. 
+                  Our Drama curriculum develops students&apos; creativity, confidence and communication skills. 
                   Through practical performance and theoretical study, students learn about theatrical 
                   techniques, performance skills and the art of storytelling.
                 </p>
