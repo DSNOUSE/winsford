@@ -15,7 +15,7 @@ export const GRADE_OPTIONS = [
   { value: 'sss3', label: 'SSS 3' },
 ]
 
-export default function GradeSelect({ label = "Student's Current Grade/Class", name = 'grade', required = false, ...props }) {
+export default function GradeSelect({ label = "Student's Current Grade/Class", name = 'grade', required = false, value, onChange, ...props }) {
   return (
     <FormSelect
       label={label}
@@ -23,6 +23,8 @@ export default function GradeSelect({ label = "Student's Current Grade/Class", n
       options={GRADE_OPTIONS}
       required={required}
       placeholder="Select grade"
+      value={value}
+      onChange={onChange}
       {...props}
     />
   )

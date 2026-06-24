@@ -1,8 +1,11 @@
+'use client'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import SectionHeading from '../components/SectionHeading'
 import NewsCard from '../components/NewsCard'
 import { Icon } from '../components/icons'
+import QuickLinks from '../components/QuickLinks'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -66,6 +69,23 @@ export default function HomePage() {
     },
   ]
 
+  const curriculumSubjects = [
+    { name: 'English', icon: 'menu_book', link: '/english' },
+    { name: 'Maths', icon: 'calculate', link: '/mathematics' },
+    { name: 'Science', icon: 'science', link: '/science' },
+    { name: 'History', icon: 'history_edu', link: '/history' },
+    { name: 'Geography', icon: 'public', link: '/geography' },
+    { name: 'Design & Technology', icon: 'build', link: '/design-technology' },
+    { name: 'Languages', icon: 'translate', link: '/languages' },
+    { name: 'Drama', icon: 'theater_comedy', link: '/drama' },
+    { name: 'PE & Sport Sciences', icon: 'sports_soccer', link: '/pe-sport' },
+    { name: 'Music', icon: 'music_note', link: '/music' },
+    { name: 'Religious', icon: 'church', link: '/religious-studies' },
+    { name: 'Personal Development', icon: 'psychology', link: '/personal-development' },
+    { name: 'Art', icon: 'palette', link: '/art' },
+    { name: 'Computing', icon: 'computer', link: '/computing' },
+  ]
+
   const newsItems = [
     {
       title: 'WASSCE 2024 Results: 95% Pass Rate',
@@ -96,10 +116,11 @@ export default function HomePage() {
   return (
     <>
       <Header />
+      <QuickLinks />
       
       <main>
         {/* Hero Section with Full Width Landing Image */}
-        <section className="relative h-[92vh] md:h-screen">
+          <section className="relative h-[92vh] md:h-screen">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -115,7 +136,7 @@ export default function HomePage() {
           </div>
           
           {/* Content Overlay */}
-          <div className="relative h-full flex items-center justify-center min-h-[80vh]">
+          <div className="relative h-full flex items-center justify-center min-h-[80vh] border-b-4 border-red">
             <div className="text-white text-center px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-center mb-6">
                   <Image
@@ -140,10 +161,47 @@ export default function HomePage() {
                 </div>
             </div>
             <div className="absolute -bottom-3 left-0 right-0 text-white text-center px-4 sm:px-6 lg:px-8">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none uppercase">
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-none uppercase">
                 <span className="block">Aiming Higher</span>
                 <span className="block -mt-2 sm:-mt-3 lg:-mt-4">Together</span>
               </h2>
+            </div>
+          </div>
+        </section>
+
+        {/* Welcome Section */}
+        <section className="section-padding bg-white">
+          <div className="container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <div className="relative h-[500px] rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.43 PM.jpeg"
+                    alt="Winsford Student"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#002d5f] mb-6">Welcome to Winsford Schools</h2>
+                <div className="w-20 h-1 bg-red mb-6"></div>
+                <p className="text-lg text-gray-700 mb-6">
+                  At Winsford Schools, we are committed to providing outstanding education that nurtures 
+                  every student's potential. Our dedicated staff work tirelessly to ensure academic progress 
+                  while fostering personal development in a supportive environment.
+                </p>
+                <p className="text-lg text-gray-700 mb-8">
+                  With a focus on excellence across STEM, arts, and sports, we prepare our students for 
+                  success in an ever-changing world. Our comprehensive curriculum and state-of-the-art 
+                  facilities provide the perfect foundation for lifelong learning.
+                </p>
+                <Link href="/visit" className="btn-primary inline-block">
+                  Read More
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -229,6 +287,26 @@ export default function HomePage() {
                     </div>
                                                           </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Curriculum Section */}
+        <section className="section-padding bg-white">
+          <div className="container">
+            <SectionHeading
+              title="Our Curriculum"
+              subtitle="A comprehensive and balanced curriculum designed to develop well-rounded individuals"
+            />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+              {curriculumSubjects.map((subject, index) => (
+                <Link key={index} href={subject.link} className="card p-6 bg-gray-100 border-b-4 border-blue-900 hover:bg-gray-200 transition-colors duration-200">
+                  <div className="flex justify-center mb-4">
+                    <Icon name={subject.icon} className="w-20 h-20 text-blue-900" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase text-left">{subject.name}</h3>
+                </Link>
               ))}
             </div>
           </div>

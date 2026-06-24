@@ -6,6 +6,7 @@ const pageContent = {
     title: 'About Winsford Schools',
     subtitle: 'A tradition of excellence in Nigerian education and character formation.',
     cta: { href: '/enquire', label: 'Speak with Admissions' },
+    sectionsLayout: '2x2',
     sections: [
       {
         id: 'welcome',
@@ -357,6 +358,7 @@ export default function DynamicContentPage({ params }) {
       subtitle={page.subtitle}
       sections={page.sections}
       cta={page.cta}
+      sectionsLayout={page.sectionsLayout}
     />
   )
 }

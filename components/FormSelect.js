@@ -5,6 +5,8 @@ export default function FormSelect({
   required = false, 
   placeholder = 'Select an option',
   className = '',
+  value,
+  onChange,
   ...props 
 }) {
   return (
@@ -16,6 +18,8 @@ export default function FormSelect({
         name={name}
         required={required}
         className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent ${className}`}
+        value={value}
+        onChange={onChange}
         {...props}
       >
         <option value="">{placeholder}</option>

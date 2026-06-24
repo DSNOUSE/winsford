@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import FormInput from '../../components/FormInput'
@@ -8,6 +11,11 @@ import FormSection from '../../components/FormSection'
 import InnerPageHero from '../../components/InnerPageHero'
 
 export default function StudentInformationPage() {
+  const [currentStep, setCurrentStep] = useState(1)
+
+  const nextStep = () => setCurrentStep((step) => Math.min(step + 1, 3))
+  const prevStep = () => setCurrentStep((step) => Math.max(step - 1, 1))
+
   return (
     <>
       <Header />
@@ -30,97 +38,131 @@ export default function StudentInformationPage() {
             <div className="bg-gray-50 p-8 border">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center uppercase">Student Information Form</h2>
 
+              <div className="flex items-center justify-center gap-2 mb-8 text-sm font-medium">
+                <span className={`px-3 py-1 rounded-full ${currentStep === 1 ? 'bg-sky-blue text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  1. Profile
+                </span>
+                <span className={`px-3 py-1 rounded-full ${currentStep === 2 ? 'bg-sky-blue text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  2. Contact
+                </span>
+                <span className={`px-3 py-1 rounded-full ${currentStep === 3 ? 'bg-sky-blue text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  3. Consent
+                </span>
+              </div>
+
               <form className="space-y-6">
-                <FormSection title="Student Profile">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormInput label="First Name" name="firstName" required />
-                    <FormInput label="Last Name" name="lastName" required />
+                <div className={currentStep === 1 ? '' : 'hidden'}>
+                  <FormSection title="Student Profile">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormInput label="First Name" name="firstName" required />
+                      <FormInput label="Last Name" name="lastName" required />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <FormSelect
+                        label="Student Type"
+                        name="studentType"
+                        required
+                        placeholder="Select student type"
+                        options={[
+                          { value: 'current', label: 'Current Student' },
+                          { value: 'alumni', label: 'Alumni' },
+                        ]}
+                      />
+                      <FormSelect
+                        label="Gender"
+                        name="gender"
+                        required
+                        placeholder="Select gender"
+                        options={[
+                          { value: 'male', label: 'Male' },
+                          { value: 'female', label: 'Female' },
+                        ]}
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <FormInput label="Date of Birth" name="dateOfBirth" type="date" required />
+                      <FormInput label="Admission Year" name="admissionYear" type="number" min="1990" max="2100" required />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <FormInput label="Current Class" name="currentClass" placeholder="e.g., SSS 2" />
+                      <FormInput label="Graduation Year" name="graduationYear" type="number" min="1990" max="2100" placeholder="e.g., 2021" />
+                    </div>
+                  </FormSection>
+                </div>
+
+                <div className={currentStep === 2 ? '' : 'hidden'}>
+                  <FormSection title="Contact Information">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormInput label="Email Address" name="email" type="email" required />
+                      <FormInput label="Phone Number" name="phone" type="tel" required />
+                    </div>
+
+                    <div className="mt-6">
+                      <FormTextarea label="Home Address" name="address" rows={2} required />
+                    </div>
+                  </FormSection>
+
+                  <FormSection title="Academic Details">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormInput label="Last Class Completed" name="lastClassCompleted" required />
+                      <FormInput label="State of Origin" name="stateOfOrigin" />
+                    </div>
+
+                    <div className="mt-6">
+                      <FormTextarea
+                        label="Achievements / Current Occupation"
+                        name="achievementsOrOccupation"
+                        rows={3}
+                        placeholder="Share your achievements in school or your current occupation"
+                      />
+                    </div>
+                  </FormSection>
+                </div>
+
+                <div className={currentStep === 3 ? '' : 'hidden'}>
+                  <div className="bg-white p-6 border">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase">Consent</h3>
+                    <div className="space-y-3">
+                      <FormCheckbox
+                        name="consentAccuracy"
+                        required
+                        label="I confirm that the information provided is accurate and up to date."
+                      />
+                      <FormCheckbox
+                        name="consentContact"
+                        required
+                        label="I agree that Winsford Schools may contact me regarding this submission."
+                      />
+                    </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <FormSelect
-                      label="Student Type"
-                      name="studentType"
-                      required
-                      placeholder="Select student type"
-                      options={[
-                        { value: 'current', label: 'Current Student' },
-                        { value: 'alumni', label: 'Alumni' },
-                      ]}
-                    />
-                    <FormSelect
-                      label="Gender"
-                      name="gender"
-                      required
-                      placeholder="Select gender"
-                      options={[
-                        { value: 'male', label: 'Male' },
-                        { value: 'female', label: 'Female' },
-                      ]}
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <FormInput label="Date of Birth" name="dateOfBirth" type="date" required />
-                    <FormInput label="Admission Year" name="admissionYear" type="number" min="1990" max="2100" required />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <FormInput label="Current Class" name="currentClass" placeholder="e.g., SSS 2" />
-                    <FormInput label="Graduation Year" name="graduationYear" type="number" min="1990" max="2100" placeholder="e.g., 2021" />
-                  </div>
-                </FormSection>
-
-                <FormSection title="Contact Information">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormInput label="Email Address" name="email" type="email" required />
-                    <FormInput label="Phone Number" name="phone" type="tel" required />
-                  </div>
-
-                  <div className="mt-6">
-                    <FormTextarea label="Home Address" name="address" rows={2} required />
-                  </div>
-                </FormSection>
-
-                <FormSection title="Academic Details">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormInput label="Last Class Completed" name="lastClassCompleted" required />
-                    <FormInput label="State of Origin" name="stateOfOrigin" />
-                  </div>
-
-                  <div className="mt-6">
-                    <FormTextarea
-                      label="Achievements / Current Occupation"
-                      name="achievementsOrOccupation"
-                      rows={3}
-                      placeholder="Share your achievements in school or your current occupation"
-                    />
-                  </div>
-                </FormSection>
-
-                <div className="bg-white p-6 border">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase">Consent</h3>
-                  <div className="space-y-3">
-                    <FormCheckbox
-                      name="consentAccuracy"
-                      required
-                      label="I confirm that the information provided is accurate and up to date."
-                    />
-                    <FormCheckbox
-                      name="consentContact"
-                      required
-                      label="I agree that Winsford Schools may contact me regarding this submission."
-                    />
+                  <div className="text-center mt-6">
+                    <button type="submit" className="btn-primary">
+                      Submit Information
+                    </button>
+                    <p className="text-sm text-gray-600 mt-3">
+                      Thank you for helping us build a complete student database.
+                    </p>
                   </div>
                 </div>
 
-                <div className="text-center">
-                  <button type="submit" className="btn-primary">
-                    Submit Information
+                <div className="flex items-center justify-between pt-4">
+                  <button
+                    type="button"
+                    onClick={prevStep}
+                    className={`btn-secondary ${currentStep === 1 ? 'opacity-50 pointer-events-none' : ''}`}
+                  >
+                    Previous
                   </button>
-                  <p className="text-sm text-gray-600 mt-3">
-                    Thank you for helping us build a complete student database.
-                  </p>
+
+                  {currentStep < 3 ? (
+                    <button type="button" onClick={nextStep} className="btn-primary">
+                      Next
+                    </button>
+                  ) : null}
                 </div>
               </form>
             </div>

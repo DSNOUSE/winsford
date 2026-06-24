@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import RotatingHeaderImage from './RotatingHeaderImage'
 
 export default function InnerPageHero({
   title,
@@ -9,36 +9,26 @@ export default function InnerPageHero({
   containerClassName = '',
 }) {
   return (
-    <section
-      className="relative pt-36 pb-20 text-white overflow-hidden"
-      style={{
-        backgroundImage: "url('/images/school-gate.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <div className="absolute inset-0">
-        <Image
-          src="/images/school-gate.png"
-          alt="Winsford Schools"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#002d5f]/45"></div>
-      </div>
+    <>
+      <section className="relative h-[400px] text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <RotatingHeaderImage />
+          <div className="absolute inset-0 bg-[#002d5f]/45"></div>
+        </div>
+      </section>
 
-      <div className={`relative container ${containerClassName}`}>
-        {children}
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
-        {subtitle ? <p className="text-xl text-gray-200 max-w-3xl">{subtitle}</p> : null}
-        {cta ? (
-          <Link href={cta.href} className="inline-block mt-8 btn-primary">
-            {cta.label}
-          </Link>
-        ) : null}
-      </div>
-    </section>
+      <section className="bg-white py-12 border-b-4 border-red">
+        <div className={`container ${containerClassName}`}>
+          {children}
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#002d5f]">{title}</h1>
+          {subtitle ? <p className="text-xl text-gray-700 max-w-3xl">{subtitle}</p> : null}
+          {cta ? (
+            <Link href={cta.href} className="inline-block mt-8 btn-primary">
+              {cta.label}
+            </Link>
+          ) : null}
+        </div>
+      </section>
+    </>
   )
 }

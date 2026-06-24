@@ -36,7 +36,7 @@ export default function NewsArticlePage({ params }) {
             <span className="bg-sky-blue text-white text-xs px-3 py-1 mr-3">
               {item.category}
             </span>
-            <span className="text-sm text-gray-200">{item.date}</span>
+            <span className="text-sm text-gray-500">{item.date}</span>
           </div>
         </InnerPageHero>
         <section className="section-padding bg-white">

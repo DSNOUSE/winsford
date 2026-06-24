@@ -16,7 +16,7 @@ export default function StudentsPage() {
         <section className="section-padding bg-white">
         <div className="container">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="card p-8 text-center">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-3 uppercase">Student Portal</h2>
                 <p className="text-gray-600 mb-6">
@@ -34,6 +34,16 @@ export default function StudentsPage() {
                 </p>
                 <Link href="/student-information" className="btn-red inline-block">
                   Go to Student Registry
+                </Link>
+              </div>
+
+              <div className="card p-8 text-center">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-3 uppercase">Student Database</h2>
+                <p className="text-gray-600 mb-6">
+                  Browse and search the complete student database with filtering by class and section.
+                </p>
+                <Link href="/students/database" className="btn-primary inline-block">
+                  View Database
                 </Link>
               </div>
             </div>

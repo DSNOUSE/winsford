@@ -3,6 +3,8 @@ export default function FormCheckbox({
   name, 
   required = false, 
   className = '',
+  checked,
+  onChange,
   ...props 
 }) {
   return (
@@ -12,6 +14,8 @@ export default function FormCheckbox({
         name={name}
         required={required}
         className="mr-3 mt-1 text-sky-blue"
+        checked={checked}
+        onChange={onChange}
         {...props}
       />
       <span className="text-sm text-gray-700">

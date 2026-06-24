@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import FormInput from '../../components/FormInput'
@@ -9,6 +12,88 @@ import GradeSelect from '../../components/GradeSelect'
 import InnerPageHero from '../../components/InnerPageHero'
 
 export default function ApplyPage() {
+  const [currentStep, setCurrentStep] = useState(1)
+  const [formData, setFormData] = useState({
+    // Student Information
+    firstName: '',
+    lastName: '',
+    dob: '',
+    gender: '',
+    grade: '',
+    previousSchool: '',
+    // Parent/Guardian Information
+    parentName: '',
+    relationship: '',
+    email: '',
+    phone: '',
+    address: '',
+    // Academic Information
+    lastSchool: '',
+    lastGrade: '',
+    averageMarks: '',
+    // Additional Information
+    medical: '',
+    interests: '',
+    motivation: '',
+    // Declaration
+    declaration1: false,
+    declaration2: false,
+    declaration3: false,
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }))
+  }
+
+  const validateStep = (step) => {
+    switch (step) {
+      case 1:
+        return formData.firstName && formData.lastName && formData.dob && 
+               formData.gender && formData.grade
+      case 2:
+        return formData.parentName && formData.relationship && formData.email && 
+               formData.phone && formData.address && formData.lastSchool && formData.lastGrade
+      case 3:
+        return formData.motivation && formData.declaration1 && 
+               formData.declaration2 && formData.declaration3
+      default:
+        return false
+    }
+  }
+
+  const nextStep = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep(prev => Math.min(prev + 1, 3))
+    } else {
+      alert('Please fill in all required fields before proceeding.')
+    }
+  }
+
+  const prevStep = () => {
+    setCurrentStep(prev => Math.max(prev - 1, 1))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (validateStep(3)) {
+      console.log('Application submitted:', formData)
+      alert('Application submitted successfully! You will receive a confirmation email within 24-48 hours.')
+      // Here you would typically send the data to your backend
+    } else {
+      alert('Please complete all required fields and declarations.')
+    }
+  }
+
+  const steps = [
+    { number: 1, title: 'Student Information' },
+    { number: 2, title: 'Parent & Academic Info' },
+    { number: 3, title: 'Additional & Declaration' },
+  ]
+
   return (
     <>
       <Header />
@@ -47,133 +132,279 @@ export default function ApplyPage() {
 
             <div className="bg-gray-50 p-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Online Application Form</h2>
-              <form className="space-y-6">
-                {/* Student Information */}
-                <FormSection title="Student Information">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormInput label="First Name" name="firstName" required />
-                    <FormInput label="Last Name" name="lastName" required />
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <FormInput label="Date of Birth" name="dob" type="date" required />
-                    <FormSelect
-                      label="Gender"
-                      name="gender"
-                      required
-                      placeholder="Select gender"
-                      options={[
-                        { value: 'male', label: 'Male' },
-                        { value: 'female', label: 'Female' },
-                      ]}
-                    />
-                  </div>
+              
+              {/* Progress Steps */}
+              <div className="mb-8">
+                <div className="flex justify-between items-center">
+                  {steps.map((step) => (
+                    <div key={step.number} className="flex-1 text-center">
+                      <div className={`flex items-center justify-center w-10 h-10 mx-auto rounded-full border-2 font-semibold ${
+                        currentStep >= step.number 
+                          ? 'bg-blue-900 border-blue-900 text-white' 
+                          : 'border-gray-300 text-gray-400'
+                      }`}>
+                        {step.number}
+                      </div>
+                      <p className={`mt-2 text-sm font-medium ${
+                        currentStep >= step.number ? 'text-blue-900' : 'text-gray-400'
+                      }`}>
+                        {step.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <GradeSelect label="Grade Applying For" required />
-                    <FormInput label="Previous School Attended" name="previousSchool" />
-                  </div>
-                </FormSection>
+              <form onSubmit={handleSubmit}>
+                {/* Step 1: Student Information */}
+                {currentStep === 1 && (
+                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <FormSection title="Student Information">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <FormInput 
+                          label="First Name" 
+                          name="firstName" 
+                          required 
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                        />
+                        <FormInput 
+                          label="Last Name" 
+                          name="lastName" 
+                          required 
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6 mt-6">
+                        <FormInput 
+                          label="Date of Birth" 
+                          name="dob" 
+                          type="date" 
+                          required 
+                          value={formData.dob}
+                          onChange={handleInputChange}
+                        />
+                        <FormSelect
+                          label="Gender"
+                          name="gender"
+                          required
+                          placeholder="Select gender"
+                          value={formData.gender}
+                          onChange={handleInputChange}
+                          options={[
+                            { value: 'male', label: 'Male' },
+                            { value: 'female', label: 'Female' },
+                          ]}
+                        />
+                      </div>
 
-                {/* Parent/Guardian Information */}
-                <FormSection title="Parent/Guardian Information">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormInput label="Parent's Full Name" name="parentName" required />
-                    <FormSelect
-                      label="Relationship to Student"
-                      name="relationship"
-                      required
-                      placeholder="Select relationship"
-                      options={[
-                        { value: 'father', label: 'Father' },
-                        { value: 'mother', label: 'Mother' },
-                        { value: 'guardian', label: 'Guardian' },
-                      ]}
-                    />
+                      <div className="grid md:grid-cols-2 gap-6 mt-6">
+                        <GradeSelect 
+                          label="Grade Applying For" 
+                          required 
+                          value={formData.grade}
+                          onChange={handleInputChange}
+                        />
+                        <FormInput 
+                          label="Previous School Attended" 
+                          name="previousSchool"
+                          value={formData.previousSchool}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </FormSection>
                   </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <FormInput label="Email Address" name="email" type="email" required />
-                    <FormInput label="Phone Number" name="phone" type="tel" required />
-                  </div>
+                )}
 
-                  <div className="mt-6">
-                    <FormTextarea label="Home Address" name="address" rows={2} required />
-                  </div>
-                </FormSection>
+                {/* Step 2: Parent/Guardian & Academic Information */}
+                {currentStep === 2 && (
+                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <FormSection title="Parent/Guardian Information">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <FormInput 
+                          label="Parent's Full Name" 
+                          name="parentName" 
+                          required 
+                          value={formData.parentName}
+                          onChange={handleInputChange}
+                        />
+                        <FormSelect
+                          label="Relationship to Student"
+                          name="relationship"
+                          required
+                          placeholder="Select relationship"
+                          value={formData.relationship}
+                          onChange={handleInputChange}
+                          options={[
+                            { value: 'father', label: 'Father' },
+                            { value: 'mother', label: 'Mother' },
+                            { value: 'guardian', label: 'Guardian' },
+                          ]}
+                        />
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6 mt-6">
+                        <FormInput 
+                          label="Email Address" 
+                          name="email" 
+                          type="email" 
+                          required 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                        />
+                        <FormInput 
+                          label="Phone Number" 
+                          name="phone" 
+                          type="tel" 
+                          required 
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                        />
+                      </div>
 
-                {/* Academic Information */}
-                <FormSection title="Academic Information">
-                  <div className="space-y-4">
-                    <FormInput label="Last School Attended" name="lastSchool" required />
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <FormInput label="Last Grade Completed" name="lastGrade" required />
-                      <FormInput label="Average Grade/Marks" name="averageMarks" />
+                      <div className="mt-6">
+                        <FormTextarea 
+                          label="Home Address" 
+                          name="address" 
+                          rows={2} 
+                          required 
+                          value={formData.address}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </FormSection>
+
+                    <FormSection title="Academic Information">
+                      <div className="space-y-4">
+                        <FormInput 
+                          label="Last School Attended" 
+                          name="lastSchool" 
+                          required 
+                          value={formData.lastSchool}
+                          onChange={handleInputChange}
+                        />
+                        
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <FormInput 
+                            label="Last Grade Completed" 
+                            name="lastGrade" 
+                            required 
+                            value={formData.lastGrade}
+                            onChange={handleInputChange}
+                          />
+                          <FormInput 
+                            label="Average Grade/Marks" 
+                            name="averageMarks"
+                            value={formData.averageMarks}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                    </FormSection>
+                  </div>
+                )}
+
+                {/* Step 3: Additional Information & Declaration */}
+                {currentStep === 3 && (
+                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <FormSection title="Additional Information">
+                      <div className="space-y-4">
+                        <FormTextarea
+                          label="Medical Conditions or Allergies"
+                          name="medical"
+                          rows={3}
+                          placeholder="Please specify any medical conditions, allergies, or special needs we should be aware of"
+                          value={formData.medical}
+                          onChange={handleInputChange}
+                        />
+                        
+                        <FormTextarea
+                          label="Extracurricular Interests"
+                          name="interests"
+                          rows={3}
+                          placeholder="Sports, clubs, hobbies, or other activities your child enjoys"
+                          value={formData.interests}
+                          onChange={handleInputChange}
+                        />
+
+                        <FormTextarea
+                          label="Why do you want to join Winsford Schools?"
+                          name="motivation"
+                          rows={4}
+                          required
+                          placeholder="Tell us about your reasons for choosing Winsford Schools"
+                          value={formData.motivation}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </FormSection>
+
+                    <div className="bg-white p-6 border">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Declaration</h3>
+                      <div className="space-y-3">
+                        <FormCheckbox
+                          name="declaration1"
+                          required
+                          checked={formData.declaration1}
+                          onChange={handleInputChange}
+                          label="I certify that all information provided in this application is true and correct to the best of my knowledge."
+                        />
+                        <FormCheckbox
+                          name="declaration2"
+                          required
+                          checked={formData.declaration2}
+                          onChange={handleInputChange}
+                          label="I understand that any false information may result in the rejection of this application or dismissal if discovered later."
+                        />
+                        <FormCheckbox
+                          name="declaration3"
+                          required
+                          checked={formData.declaration3}
+                          onChange={handleInputChange}
+                          label="I agree to abide by the rules and regulations of Winsford Schools."
+                        />
+                      </div>
                     </div>
                   </div>
-                </FormSection>
+                )}
 
-                {/* Additional Information */}
-                <FormSection title="Additional Information">
-                  <div className="space-y-4">
-                    <FormTextarea
-                      label="Medical Conditions or Allergies"
-                      name="medical"
-                      rows={3}
-                      placeholder="Please specify any medical conditions, allergies, or special needs we should be aware of"
-                    />
-                    
-                    <FormTextarea
-                      label="Extracurricular Interests"
-                      name="interests"
-                      rows={3}
-                      placeholder="Sports, clubs, hobbies, or other activities your child enjoys"
-                    />
-
-                    <FormTextarea
-                      label="Why do you want to join Winsford Schools?"
-                      name="motivation"
-                      rows={4}
-                      required
-                      placeholder="Tell us about your reasons for choosing Winsford Schools"
-                    />
-                  </div>
-                </FormSection>
-
-                {/* Declaration */}
-                <div className="bg-white p-6 border">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Declaration</h3>
-                  <div className="space-y-3">
-                    <FormCheckbox
-                      name="declaration1"
-                      required
-                      label="I certify that all information provided in this application is true and correct to the best of my knowledge."
-                    />
-                    <FormCheckbox
-                      name="declaration2"
-                      required
-                      label="I understand that any false information may result in the rejection of this application or dismissal if discovered later."
-                    />
-                    <FormCheckbox
-                      name="declaration3"
-                      required
-                      label="I agree to abide by the rules and regulations of Winsford Schools."
-                    />
-                  </div>
+                {/* Navigation Buttons */}
+                <div className="flex justify-between mt-8">
+                  {currentStep > 1 && (
+                    <button
+                      type="button"
+                      onClick={prevStep}
+                      className="btn-secondary"
+                    >
+                      Previous
+                    </button>
+                  )}
+                  
+                  {currentStep < 3 ? (
+                    <button
+                      type="button"
+                      onClick={nextStep}
+                      className="btn-primary ml-auto"
+                    >
+                      Next
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="btn-red bg-red hover:bg-red/90 text-white px-8 py-3 font-semibold ml-auto"
+                    >
+                      Submit Application
+                    </button>
+                  )}
                 </div>
 
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="btn-red bg-red hover:bg-red/90 text-white px-8 py-3 font-semibold"
-                  >
-                    Submit Application
-                  </button>
-                  <p className="text-sm text-gray-600 mt-3">
+                {currentStep === 3 && (
+                  <p className="text-sm text-gray-600 mt-4 text-center">
                     You will receive a confirmation email within 24-48 hours.
                   </p>
-                </div>
+                )}
               </form>
             </div>
 

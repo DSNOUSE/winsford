@@ -5,6 +5,8 @@ export default function FormTextarea({
   placeholder = '', 
   rows = 4,
   className = '',
+  value,
+  onChange,
   ...props 
 }) {
   return (
@@ -18,6 +20,8 @@ export default function FormTextarea({
         placeholder={placeholder}
         rows={rows}
         className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent ${className}`}
+        value={value}
+        onChange={onChange}
         {...props}
       ></textarea>
     </div>
