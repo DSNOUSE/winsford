@@ -21,47 +21,64 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="section-padding">
         <div className="container">
-          <div className="flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left lg:justify-between">
-            {/* Logo & Name */}
-            <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
-              <Image
-                src="/images/logo-outline.png"
-                alt="Winsford Schools Logo"
-                width={80}
-                height={80}
-                className="h-20 w-auto mb-3"
-              />
-              <h3 className="text-xl font-bold">Winsford Schools</h3>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left: Info */}
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              {/* Logo & Name */}
+              <div className="flex flex-col items-center lg:items-start mb-8">
+                <Image
+                  src="/images/logo-outline.png"
+                  alt="Winsford Schools Logo"
+                  width={80}
+                  height={80}
+                  className="h-20 w-auto mb-3"
+                />
+                <h3 className="text-xl font-bold">Contact Us</h3>
+              </div>
+
+              {/* Contact Details */}
+              <div className="space-y-4 flex flex-col items-center lg:items-start mb-8">
+                <div className="flex items-center text-gray-300">
+                  <Icon name="location_on" className="mr-3 text-sky-blue" />
+                  <span>8/9 Awopeju Close, Igbogbo, Ikorodu, Lagos, Nigeria</span>
+                </div>
+                <div className="flex items-center text-gray-300">
+                  <Icon name="phone" className="mr-3 text-sky-blue" />
+                  <span>+234 XXX XXX XXXX</span>
+                </div>
+                <div className="flex items-center text-gray-300">
+                  <Icon name="email" className="mr-3 text-sky-blue" />
+                  <span>info@winsfordschools.com.ng</span>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="flex space-x-5">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-sky-blue transition-colors duration-200"
+                    aria-label={social.name}
+                  >
+                    <Icon name={social.icon} className="icon-white" size={20} />
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* Contact Details */}
-            <div className="space-y-4 flex flex-col items-center lg:items-start mb-8 lg:mb-0">
-              <div className="flex items-center text-gray-300">
-                <Icon name="location_on" className="mr-3 text-sky-blue" />
-                <span>8/9 Awopeju Close, Igbogbo, Ikorodu, Lagos, Nigeria</span>
-              </div>
-              <div className="flex items-center text-gray-300">
-                <Icon name="phone" className="mr-3 text-sky-blue" />
-                <span>+234 XXX XXX XXXX</span>
-              </div>
-              <div className="flex items-center text-gray-300">
-                <Icon name="email" className="mr-3 text-sky-blue" />
-                <span>info@winsfordschools.com.ng</span>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div className="flex space-x-5">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-sky-blue transition-colors duration-200"
-                  aria-label={social.name}
-                >
-                  <Icon name={social.icon} className="icon-white" size={20} />
-                </a>
-              ))}
+            {/* Right: Google Map */}
+            <div className="rounded-lg overflow-hidden h-80 lg:min-h-[320px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5!2d3.3208761!3d6.669298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b96bf3b55faeb%3A0x7357213f4c38a47d!2sWINSFORD%20COMPREHENSIVE%20COLLEGE!5e0!3m2!1sen!2sng"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Winsford Schools Location"
+              ></iframe>
             </div>
           </div>
         </div>
