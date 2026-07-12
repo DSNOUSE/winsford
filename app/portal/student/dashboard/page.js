@@ -3,6 +3,50 @@ import { authOptions } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
+
+const subjectIconMap = {
+  'Mathematics': '/images/icons/maths.png',
+  'English': '/images/icons/eng.png',
+  'Science': '/images/icons/chemistry.png',
+  'Chemistry': '/images/icons/chemistry.png',
+  'Physics': '/images/icons/physics.png',
+  'Biology': '/images/icons/healthy.png',
+  'Computer Science': '/images/icons/computing.png',
+  'Computing': '/images/icons/computing.png',
+  'History': '/images/icons/history.png',
+  'Geography': '/images/icons/geography.png',
+  'Social Studies': '/images/icons/geography.png',
+  'Religious Studies': '/images/icons/religious.png',
+  'Religious Education': '/images/icons/religious.png',
+  'Art': '/images/icons/arts.png',
+  'Fine Art': '/images/icons/arts.png',
+  'Music': '/images/icons/music.png',
+  'Drama': '/images/icons/theater.png',
+  'Theatre': '/images/icons/theater.png',
+  'Languages': '/images/icons/languages.png',
+  'French': '/images/icons/languages.png',
+  'Spanish': '/images/icons/languages.png',
+  'PE': '/images/icons/healthy.png',
+  'Physical Education': '/images/icons/healthy.png',
+  'PE & Sport': '/images/icons/healthy.png',
+  'Personal Development': '/images/icons/personal-development.png',
+  'Design & Technology': '/images/icons/worker.png',
+  'Design Technology': '/images/icons/worker.png',
+  'Agricultural Science': '/images/icons/training.png',
+}
+
+function getSubjectIcon(subjectName) {
+  if (!subjectName) return '/images/icons/teach.png'
+  const icon = subjectIconMap[subjectName]
+  if (icon) return icon
+  // Try partial match
+  const key = Object.keys(subjectIconMap).find(k =>
+    subjectName.toLowerCase().includes(k.toLowerCase()) ||
+    k.toLowerCase().includes(subjectName.toLowerCase())
+  )
+  return key ? subjectIconMap[key] : '/images/icons/teach.png'
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -163,7 +207,16 @@ export default async function StudentDashboard() {
                     {subjectTeachers.map((assignment) => (
                       <tr key={assignment.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
-                          {assignment.subject?.name || 'N/A'}
+                          <div className="flex items-center gap-3">
+                            <Image
+                              src={getSubjectIcon(assignment.subject?.name)}
+                              alt={assignment.subject?.name || 'Subject'}
+                              width={32}
+                              height={32}
+                              className="flex-shrink-0"
+                            />
+                            {assignment.subject?.name || 'N/A'}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <Link

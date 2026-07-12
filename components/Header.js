@@ -60,6 +60,8 @@ export default function Header() {
       name: 'School Life',
       href: '/school-life',
       dropdown: [
+        { name: 'Management', href: '/management' },
+        { name: 'Staff', href: '/staff' },
         { name: 'Students', href: '/students' },
         { name: "Teacher's Portal", href: '/teachers-portal' },
       ],

@@ -1,111 +1,76 @@
-import prisma from '@/lib/prisma'
+'use client'
 
-export const revalidate = 3600
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import Image from 'next/image'
+import PageHero from '../../components/PageHero'
 
-async function getTeachers() {
-  try {
-    const teachers = await prisma.teacher.findMany({
-      include: {
-        assignments: {
-          include: {
-            class: true,
-            subject: true,
-            term: {
-              where: { isActive: true }
-            }
-          },
-          orderBy: {
-            class: {
-              name: 'asc'
-            }
-          }
-        }
-      },
-      orderBy: {
-        lastName: 'asc'
-      }
-    })
-
-    return teachers
-  } catch (error) {
-    console.error('Error fetching teachers:', error)
-    return []
-  }
-}
-
-export default async function StaffPage() {
-  const teachers = await getTeachers()
+export default function StaffPage() {
+  const staff = [
+    { name: 'Staff Member 1', role: 'Teacher', subject: 'English', image: '/images/staff/principal.png' },
+    { name: 'Staff Member 2', role: 'Teacher', subject: 'Mathematics', image: '/images/staff/vp-academics.png' },
+    { name: 'Staff Member 3', role: 'Teacher', subject: 'Science', image: '/images/staff/vp-admin.png' },
+    { name: 'Staff Member 4', role: 'Teacher', subject: 'History', image: '/images/staff/assistant headteacher primary.png' },
+    { name: 'Staff Member 5', role: 'Teacher', subject: 'Geography', image: '/images/placeholder.png' },
+    { name: 'Staff Member 6', role: 'Teacher', subject: 'Physics', image: '/images/placeholder.png' },
+    { name: 'Staff Member 7', role: 'Teacher', subject: 'Chemistry', image: '/images/placeholder.png' },
+    { name: 'Staff Member 8', role: 'Teacher', subject: 'Biology', image: '/images/placeholder.png' },
+    { name: 'Staff Member 9', role: 'Teacher', subject: 'Computer Science', image: '/images/placeholder.png' },
+    { name: 'Staff Member 10', role: 'Teacher', subject: 'Art', image: '/images/placeholder.png' },
+    { name: 'Staff Member 11', role: 'Teacher', subject: 'Music', image: '/images/placeholder.png' },
+    { name: 'Staff Member 12', role: 'Teacher', subject: 'Physical Education', image: '/images/placeholder.png' },
+  ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Our Staff</h1>
-          <p className="text-xl text-blue-100">
-            Meet our dedicated team of educators committed to excellence
-          </p>
-        </div>
-      </div>
+    <>
+      <Header />
+      
+      <main>
+        <PageHero 
+          title="Our Staff" 
+          subtitle="Meet our dedicated team of educators who are committed to nurturing excellence and inspiring young minds at Winsford Schools."
+        />
+        
+        <section className="section-padding bg-white">
+          <div className="container">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#002d5f] mb-4">Our Staff</h1>
+            <div className="w-20 h-1 bg-red mb-12"></div>
+            
+            <p className="text-lg text-gray-700 mb-12 max-w-3xl">
+              Meet our dedicated team of educators who are committed to nurturing excellence and inspiring young minds at Winsford Schools.
+            </p>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teachers.map((teacher) => (
-            <div
-              key={teacher.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="aspect-w-3 aspect-h-4 bg-gray-200">
-                {teacher.photoUrl ? (
-                  <img
-                    src={teacher.photoUrl}
-                    alt={`${teacher.title} ${teacher.lastName}`}
-                    className="w-full h-64 object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                    <span className="text-white text-4xl font-bold">
-                      {teacher.title} {teacher.lastName.charAt(0)}
-                    </span>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {staff.map((member, index) => (
+                <div key={index} className="text-center">
+                  <div className="relative w-40 h-40 mx-auto mb-4">
+                    {/* Light blue arch background */}
+                    <div className="absolute inset-0 bg-sky-blue/20 rounded-t-full rounded-b-3xl"></div>
+                    {/* Circular photo with white border */}
+                    <div className="absolute inset-4 rounded-full border-4 border-white overflow-hidden bg-gray-200 shadow-lg">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        style={{ objectPosition: 'center top' }}
+                        sizes="128px"
+                      />
+                    </div>
                   </div>
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {teacher.title} {teacher.lastName}
-                </h3>
-                <p className="text-blue-600 font-semibold mb-3">
-                  {teacher.employmentType === 'class_teacher' ? 'Class Teacher' : 'Subject Teacher'}
-                </p>
-                {teacher.bio && (
-                  <p className="text-gray-600 mb-4 line-clamp-3">{teacher.bio}</p>
-                )}
-                <div className="border-t pt-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">Current Assignments:</h4>
-                  <div className="space-y-2">
-                    {teacher.assignments.length > 0 ? (
-                      teacher.assignments.map((assignment) => (
-                        <div key={assignment.id} className="text-sm">
-                          <span className="font-medium text-gray-700">
-                            {assignment.class.name}
-                          </span>
-                          {assignment.subject && (
-                            <span className="text-gray-500"> - {assignment.subject.name}</span>
-                          )}
-                          <span className="text-gray-400 block text-xs">
-                            {assignment.term.sessionName}
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-gray-500 text-sm">No current assignments</p>
-                    )}
-                  </div>
+                  {/* Name in dark blue/black */}
+                  <h3 className="text-lg font-bold text-[#002d5f] mb-1">{member.name}</h3>
+                  {/* Role in light blue */}
+                  <p className="text-sky-blue text-sm mb-1">{member.role}</p>
+                  <p className="text-gray-500 text-sm">{member.subject}</p>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
   )
 }

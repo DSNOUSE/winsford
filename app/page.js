@@ -17,6 +17,7 @@ const heroImages = [
 
 export default function HomePage() {
   const [currentImage, setCurrentImage] = useState(0)
+  const [hoveredIndex, setHoveredIndex] = useState(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -84,20 +85,20 @@ export default function HomePage() {
   ]
 
   const curriculumSubjects = [
-    { name: 'English', icon: null, image: '/images/icons/eng.png', link: '/english' },
-    { name: 'Maths', icon: null, image: '/images/icons/math.png', link: '/mathematics' },
-    { name: 'Science', icon: null, image: '/images/icons/chemistry.png', link: '/science' },
-    { name: 'History', icon: null, image: '/images/icons/history.png', link: '/history' },
-    { name: 'Geography', icon: null, image: '/images/icons/geography.png', link: '/geography' },
-    { name: 'Design & Technology', icon: 'build', image: null, link: '/design-technology' },
-    { name: 'Languages', icon: null, image: '/images/icons/languges.png', link: '/languages' },
-    { name: 'Drama', icon: null, image: '/images/icons/theater.png', link: '/drama' },
-    { name: 'PE & Sport Sciences', icon: null, image: '/images/icons/healthy.png', link: '/pe-sport' },
-    { name: 'Music', icon: null, image: '/images/icons/music.png', link: '/music' },
-    { name: 'Religious', icon: null, image: '/images/icons/religious.png', link: '/religious-studies' },
-    { name: 'Personal Development', icon: null, image: '/images/icons/personal-development.png', link: '/personal-development' },
-    { name: 'Art', icon: null, image: '/images/icons/arts.png', link: '/art' },
-    { name: 'Computing', icon: null, image: '/images/icons/computing.png', link: '/computing' },
+    { name: 'English', icon: '/images/icons/eng.png', link: '/english' },
+    { name: 'Maths', icon: '/images/icons/maths.png', link: '/mathematics' },
+    { name: 'Science', icon: '/images/icons/chemistry.png', link: '/science' },
+    { name: 'History', icon: '/images/icons/history.png', link: '/history' },
+    { name: 'Geography', icon: '/images/icons/geography.png', link: '/geography' },
+    { name: 'Design & Technology', icon: '/images/icons/worker.png', link: '/design-technology' },
+    { name: 'Languages', icon: '/images/icons/languages.png', link: '/languages' },
+    { name: 'Drama', icon: '/images/icons/drama.png', link: '/drama' },
+    { name: 'PE & Sport Sciences', icon: '/images/icons/healthy.png', link: '/pe-sport' },
+    { name: 'Music', icon: '/images/icons/music.png', link: '/music' },
+    { name: 'Religious', icon: '/images/icons/religious.png', link: '/religious-studies' },
+    { name: 'Personal Development', icon: '/images/icons/personal-development.png', link: '/personal-development' },
+    { name: 'Art', icon: '/images/icons/arts.png', link: '/art' },
+    { name: 'Computing', icon: '/images/icons/computing.png', link: '/computing' },
   ]
 
   const newsItems = [
@@ -218,10 +219,14 @@ export default function HomePage() {
                 </p>
 
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold text-[#002d5f] mb-4">Adewale Samuel | Principal</h3>
+                  <h3 className="text-xl text-[#002d5f] mb-4">
+                    <span className="font-bold">Mr Yussuf Wasiu</span>
+                    <br />
+                    <span className="font-normal">Principal</span>
+                  </h3>
                   <div className="relative w-40 h-48 rounded-lg overflow-hidden">
                     <Image
-                      src="/images/School Photos/VP-Portraite.png"
+                      src="/images/staff/principal.png"
                       alt="Principal Portrait"
                       fill
                       className="object-cover"
@@ -270,15 +275,23 @@ export default function HomePage() {
             />
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: 'grade', title: '95% WASSCE Pass Rate', description: 'Consistently outstanding results in national examinations' },
-                { icon: 'school', title: 'Qualified Teachers', description: 'Over 50 experienced and dedicated educators' },
-                { icon: 'security', title: 'Safe Environment', description: 'Student welfare and safety are our top priorities' },
-                { icon: 'emoji_events', title: 'Proven Track Record', description: '25+ years of academic excellence and character building' },
-                { icon: 'computer', title: 'Modern Facilities', description: 'Well-equipped labs, library, and learning spaces' },
-                { icon: 'people', title: 'Small Class Sizes', description: 'Personalised attention for every student' },
+                { icon: '/images/icons/success.png', title: '95% WASSCE Pass Rate', description: 'Consistently outstanding results in national examinations' },
+                { icon: '/images/icons/teach.png', title: 'Qualified Teachers', description: 'Over 50 experienced and dedicated educators' },
+                { icon: '/images/icons/worker.png', title: 'Safe Environment', description: 'Student welfare and safety are our top priorities' },
+                { icon: '/images/icons/track-back.png', title: 'Proven Track Record', description: '25+ years of academic excellence and character building' },
+                { icon: '/images/icons/computing.png', title: 'Modern Facilities', description: 'Well-equipped labs, library, and learning spaces' },
+                { icon: '/images/icons/training.png', title: 'Small Class Sizes', description: 'Personalised attention for every student' },
               ].map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg border-b-4 border-blue-900">
-                  <Icon name={item.icon} className="w-12 h-12 text-blue-900 mb-4" />
+                <div 
+                  key={index} 
+                  className="bg-white p-6 rounded-lg border-blue-900 transition-all duration-300"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{ opacity: hoveredIndex === null || hoveredIndex === index ? 1 : 0.3 }}
+                >
+                  <div className="w-12 h-12 mb-4 flex items-center justify-center text-blue-900">
+                    <Image src={item.icon} alt={item.title} width={48} height={48} className={`brightness-0 mix-blend-multiply transition-all duration-300 ${hoveredIndex === index ? 'scale-110' : ''}`} />
+                  </div>
                   <h3 className="text-lg font-bold text-[#002d5f] mb-2">{item.title}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </div>
@@ -323,11 +336,7 @@ export default function HomePage() {
               {curriculumSubjects.map((subject, index) => (
                 <Link key={index} href={subject.link} className="card p-6 bg-gray-100 border-b-4 border-blue-900 hover:bg-gray-200 transition-colors duration-200">
                   <div className="flex justify-center mb-4">
-                    {subject.image ? (
-                      <Image src={subject.image} alt={subject.name} width={80} height={80} className="w-20 h-20 object-contain" />
-                    ) : (
-                      <Icon name={subject.icon} className="w-20 h-20 text-blue-900" />
-                    )}
+                    <Image src={subject.icon} alt={subject.name} width={80} height={80} />
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 uppercase text-left">{subject.name}</h3>
                 </Link>
