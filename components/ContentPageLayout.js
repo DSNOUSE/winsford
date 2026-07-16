@@ -9,6 +9,7 @@ export default function ContentPageLayout({
   sections = [],
   cta,
   sectionsLayout = 'stack',
+  heroImages,
 }) {
   const isTwoByTwoGrid = sectionsLayout === '2x2'
 
@@ -16,7 +17,7 @@ export default function ContentPageLayout({
     <>
       <Header />
       <main>
-        <InnerPageHero title={title} subtitle={subtitle} cta={cta} />
+        <InnerPageHero title={title} subtitle={subtitle} cta={cta} heroImages={heroImages} />
         <section className="section-padding bg-white">
           <div className={`container ${isTwoByTwoGrid ? 'grid md:grid-cols-2 gap-12' : 'space-y-12'}`}>
             {sections.map((section) => (

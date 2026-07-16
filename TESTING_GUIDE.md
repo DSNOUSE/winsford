@@ -13,7 +13,7 @@ Before testing, ensure you have:
 
 ```env
 # Replace with your actual database URL
-DATABASE_URL='postgresql://neondb_owner:npg_UriqP6Rj0ZEW@ep-fragrant-hill-abkgdkp0-pooler.eu-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+DATABASE_URL='postgresql://YOUR_USER:YOUR_PASSWORD@YOUR_HOST:5432/YOUR_DATABASE?sslmode=require'
 
 # NextAuth configuration
 NEXTAUTH_URL="http://localhost:3000"

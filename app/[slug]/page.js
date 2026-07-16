@@ -7,6 +7,10 @@ const pageContent = {
     subtitle: 'A tradition of excellence in Nigerian education and character formation.',
     cta: { href: '/enquire', label: 'Speak with Admissions' },
     sectionsLayout: '2x2',
+    heroImages: [
+      '/images/School Photos/students-library.png',
+      '/images/School Photos/students-running.png',
+    ],
     sections: [
       {
         id: 'welcome',
@@ -131,7 +135,7 @@ const pageContent = {
       },
       {
         heading: 'Phone and Email',
-        body: 'Call +234 XXX XXX XXXX or email info@winsfordschools.com.ng for direct assistance from our school office.',
+        body: 'Call 0803 517 2002, 0803 402 7586, or 0703 579 7152, or email info@winsfordschools.com.ng for direct assistance from our school office.',
       },
       {
         heading: 'Office Hours',
@@ -359,6 +363,7 @@ export default function DynamicContentPage({ params }) {
       sections={page.sections}
       cta={page.cta}
       sectionsLayout={page.sectionsLayout}
+      heroImages={page.heroImages}
     />
   )
 }

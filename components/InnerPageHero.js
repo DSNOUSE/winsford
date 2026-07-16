@@ -7,12 +7,13 @@ export default function InnerPageHero({
   cta,
   children,
   containerClassName = '',
+  heroImages,
 }) {
   return (
     <>
       <section className="relative h-[400px] text-white overflow-hidden">
         <div className="absolute inset-0">
-          <RotatingHeaderImage />
+          <RotatingHeaderImage images={heroImages} />
           <div className="absolute inset-0 bg-[#002d5f]/45"></div>
         </div>
       </section>

@@ -182,7 +182,7 @@ export default function HomePage() {
         {/* Welcome Section */}
         <section className="section-padding bg-white">
           <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#002d5f] mb-6">
                   Welcome to Winsford Schools
@@ -235,7 +235,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="relative h-[600px] rounded-lg overflow-hidden">
+              <div className="relative min-h-[600px] rounded-lg overflow-hidden">
                 <Image
                   src="/images/school-gate.png"
                   alt="Winsford Schools Main Gate"
@@ -248,25 +248,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Admissions CTA Section */}
-        <section className="section-padding bg-red">
-          <div className="container text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Admissions Are Now Open</h2>
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Secure your child&apos;s place at Winsford Schools for the upcoming academic session.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/apply" className="bg-white text-red px-8 py-3 font-semibold hover:bg-gray-100 transition-colors duration-200">
-                Apply Now
-              </Link>
-              <Link href="/enquire" className="border-2 border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-red transition-colors duration-200">
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Our School */}
+        {/* 3. Why Choose Us */}
         <section className="section-padding bg-gray-50">
           <div className="container">
             <SectionHeading
@@ -300,7 +282,161 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* 4. Our Programmes */}
+        <section className="section-padding bg-white">
+          <div className="container">
+            <SectionHeading
+              title="Our Curriculum"
+              subtitle="A comprehensive and balanced curriculum designed to develop well-rounded individuals"
+            />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+              {curriculumSubjects.map((subject, index) => (
+                <Link key={index} href={subject.link} className="card p-6 bg-gray-100 border-b-4 border-blue-900 hover:bg-gray-200 transition-colors duration-200">
+                  <div className="flex justify-center mb-4">
+                    <Image src={subject.icon} alt={subject.name} width={80} height={80} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase text-left">{subject.name}</h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Our Facilities */}
+        <section className="section-padding bg-gray-50">
+          <div className="container">
+            <SectionHeading
+              title="Our Facilities"
+              subtitle="Modern learning environments designed to inspire and support student success"
+            />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { src: '/images/School Photos/students-library.png', title: 'Library & Resource Centre', description: 'A well-stocked library for research and independent learning' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', title: 'Science Laboratories', description: 'Fully equipped labs for practical science experiments' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', title: 'Music & Arts Studios', description: 'Creative spaces for artistic expression and performance' },
+                { src: '/images/School Photos/students-running.png', title: 'Sports Facilities', description: 'Running track, fields, and courts for physical education' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', title: 'Practical Workshops', description: 'Hands-on learning spaces for technical and vocational skills' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', title: 'Assembly & Events Hall', description: 'A spacious hall for ceremonies, events, and gatherings' },
+              ].map((facility, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="relative h-48">
+                    <Image src={facility.src} alt={facility.title} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-[#002d5f] mb-2">{facility.title}</h3>
+                    <p className="text-gray-600 text-sm">{facility.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Latest News */}
+        <section className="section-padding relative">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/hero.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-white/85"></div>
+          </div>
+          <div className="container relative">
+            <SectionHeading
+              title="Latest News"
+              subtitle="Celebrating achievements and sharing our latest updates"
+            />
+            <div className="grid lg:grid-cols-2 gap-8">
+              {newsItems.map((news, index) => (
+                <NewsCard
+                  key={index}
+                  title={news.title}
+                  excerpt={news.excerpt}
+                  date={news.date}
+                  category={news.category}
+                  href={`/news/${index}`}
+                />
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link href="/news" className="btn-primary">
+                View All News
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Upcoming Events */}
+        <section className="section-padding bg-white">
+          <div className="container">
+            <SectionHeading
+              title="Upcoming Events"
+              subtitle="Mark your calendar for these important dates"
+            />
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { date: 'September 2026', title: 'New Session Begins', description: 'Welcome back! The new academic session starts for all students.' },
+                { date: 'October 2026', title: 'Open Day', description: 'Visit our campus, meet our teachers, and see our facilities first-hand.' },
+                { date: 'December 2026', title: 'Annual Prize Giving Day', description: 'Celebrating academic excellence and outstanding achievements.' },
+              ].map((event, index) => (
+                <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                  <p className="text-sm font-semibold text-red mb-2">{event.date}</p>
+                  <h3 className="text-lg font-bold text-[#002d5f] mb-2">{event.title}</h3>
+                  <p className="text-gray-600">{event.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Gallery */}
+        <section className="section-padding bg-[#002d5f] overflow-hidden">
+          <div className="container">
+            <SectionHeading
+              title="School Gallery"
+              subtitle="A glimpse into life at Winsford Schools"
+              dark
+            />
+          </div>
+          <div className="mt-4 relative overflow-hidden">
+            <div className="flex animate-scroll gap-6">
+              {[
+                { src: '/images/School Photos/students-library.png', alt: 'Students reading in the library' },
+                { src: '/images/School Photos/students-running.png', alt: 'Students on the running track' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', alt: 'Hands-on practical activity' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', alt: 'Music class' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', alt: 'Graduation ceremony' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', alt: 'Science laboratory' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.53 PM (2).jpeg', alt: 'Sports achievement' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.50 PM (1).jpeg', alt: 'School assembly' },
+              ].concat([
+                { src: '/images/School Photos/students-library.png', alt: 'Students reading in the library' },
+                { src: '/images/School Photos/students-running.png', alt: 'Students on the running track' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', alt: 'Hands-on practical activity' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', alt: 'Music class' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', alt: 'Graduation ceremony' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', alt: 'Science laboratory' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.53 PM (2).jpeg', alt: 'Sports achievement' },
+                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.50 PM (1).jpeg', alt: 'School assembly' },
+              ]).map((photo, index) => (
+                <div key={index} className="relative flex-shrink-0 w-[400px] h-[280px] rounded-xl overflow-hidden shadow-lg border-2 border-white/20">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover"
+                    sizes="400px"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 9. Testimonials */}
         <section className="section-padding bg-white">
           <div className="container">
             <SectionHeading
@@ -325,77 +461,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Our Curriculum Section */}
-        <section className="section-padding bg-white">
-          <div className="container">
-            <SectionHeading
-              title="Our Curriculum"
-              subtitle="A comprehensive and balanced curriculum designed to develop well-rounded individuals"
-            />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
-              {curriculumSubjects.map((subject, index) => (
-                <Link key={index} href={subject.link} className="card p-6 bg-gray-100 border-b-4 border-blue-900 hover:bg-gray-200 transition-colors duration-200">
-                  <div className="flex justify-center mb-4">
-                    <Image src={subject.icon} alt={subject.name} width={80} height={80} />
-                  </div>
-                  <h3 className="text-sm font-semibold text-gray-900 uppercase text-left">{subject.name}</h3>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* News & Achievements Section */}
-        <section className="section-padding relative">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/hero.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-white/85"></div>
-          </div>
-          <div className="container relative">
-            <SectionHeading
-              title="Latest News & Events"
-              subtitle="Celebrating achievements and sharing our latest news"
-            />
-            <div className="grid lg:grid-cols-2 gap-8">
-              {newsItems.map((news, index) => (
-                <NewsCard
-                  key={index}
-                  title={news.title}
-                  excerpt={news.excerpt}
-                  date={news.date}
-                  category={news.category}
-                  href={`/news/${index}`}
-                />
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link href="/news" className="btn-primary">
-                View All News
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action Section */}
-        <section className="section-padding bg-white">
+        {/* 10. Admissions CTA */}
+        <section className="section-padding bg-red">
           <div className="container text-center">
-            <h2 className="text-3xl font-bold mb-4 text-[#002d5f]">Join the Winsford Family</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
-              Experience education that transforms lives. Schedule a visit to see our facilities 
-              and meet our dedicated team.
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Admissions Are Now Open</h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Secure your child&apos;s place at Winsford Schools for the upcoming academic session.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/visit" className="bg-blue-900 text-white px-8 py-3 font-semibold hover:bg-blue-800 transition-colors duration-200">
-                Schedule a Visit
+              <Link href="/apply" className="bg-white text-red px-8 py-3 font-semibold hover:bg-gray-100 transition-colors duration-200">
+                Apply Now
               </Link>
-              <Link href="/enquire" className="border-2 border-blue-900 text-blue-900 px-8 py-3 font-semibold hover:bg-blue-900 hover:text-white transition-colors duration-200">
-                Request Information
+              <Link href="/enquire" className="border-2 border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-red transition-colors duration-200">
+                Contact Us
               </Link>
             </div>
           </div>

@@ -39,15 +39,15 @@ export default function Footer() {
               {/* Contact Details */}
               <div className="space-y-4 flex flex-col items-center lg:items-start mb-8">
                 <div className="flex items-center text-gray-300">
-                  <Icon name="location_on" className="mr-3 text-sky-blue" />
+                  <Icon name="location_on" color="sky-blue" className="mr-3" />
                   <span>8/9 Awopeju Close, Igbogbo, Ikorodu, Lagos, Nigeria</span>
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <Icon name="phone" className="mr-3 text-sky-blue" />
-                  <span>+234 XXX XXX XXXX</span>
+                  <Icon name="phone" color="sky-blue" className="mr-3" />
+                  <span>0803 517 2002 / 0803 402 7586 / 0703 579 7152</span>
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <Icon name="email" className="mr-3 text-sky-blue" />
+                  <Icon name="email" color="sky-blue" className="mr-3" />
                   <span>info@winsfordschools.com.ng</span>
                 </div>
               </div>

@@ -28,7 +28,7 @@ export default function EnquirePage() {
                     <p className="text-gray-600">8/9 Awopeju Close, Igbogbo, Ikorodu, Lagos, Nigeria</p>
                   </ContactCard>
                   <ContactCard icon="phone" title="Phone">
-                    <p className="text-gray-600">+234 XXX XXX XXXX</p>
+                    <p className="text-gray-600">0803 517 2002 / 0803 402 7586 / 0703 579 7152</p>
                   </ContactCard>
                   <ContactCard icon="email" title="Email">
                     <p className="text-gray-600">info@winsfordschools.com.ng</p>
