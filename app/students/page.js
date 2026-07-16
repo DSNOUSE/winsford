@@ -156,7 +156,7 @@ export default function StudentsPage() {
           </form>
 
           <p className="mt-6 text-sm text-gray-600">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <a href="/student-information" className="text-sky-blue hover:text-sky-blue/80 font-medium transition-colors">
               Register here
             </a>
