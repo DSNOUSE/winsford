@@ -6,7 +6,7 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function DesignTechnologyPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Design Skills</h4>
@@ -35,7 +35,7 @@ export default function DesignTechnologyPage() {
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Design Skills</h4>
@@ -64,7 +64,7 @@ export default function DesignTechnologyPage() {
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Design Skills</h4>
@@ -93,7 +93,7 @@ export default function DesignTechnologyPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">GCSE Design Technology</h4>

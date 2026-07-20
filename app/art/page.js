@@ -6,7 +6,7 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function ArtPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Drawing and Painting</h4>
@@ -35,7 +35,7 @@ export default function ArtPage() {
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Drawing and Painting</h4>
@@ -63,7 +63,7 @@ export default function ArtPage() {
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Drawing and Painting</h4>
@@ -91,7 +91,7 @@ export default function ArtPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">GCSE Art</h4>

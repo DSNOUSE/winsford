@@ -6,7 +6,7 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function GeographyPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Physical Geography</h4>
@@ -28,7 +28,7 @@ export default function GeographyPage() {
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Physical Geography</h4>
@@ -50,7 +50,7 @@ export default function GeographyPage() {
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Physical Geography</h4>
@@ -72,7 +72,7 @@ export default function GeographyPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">GCSE Geography</h4>

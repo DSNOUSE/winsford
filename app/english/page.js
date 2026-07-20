@@ -6,38 +6,40 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function EnglishPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Reading</h4>
           <ul className="list-disc pl-5 mb-4 space-y-1">
-            <li>Novel study and analysis</li>
-            <li>Poetry appreciation</li>
-            <li>Comprehension skills</li>
-            <li>Media text analysis</li>
-            <li>Reading for pleasure</li>
+            <li>Reading comprehension strategies</li>
+            <li>Analysis of prose, poetry, and drama</li>
+            <li>Vocabulary development</li>
+            <li>Critical reading of media texts</li>
+            <li>Library and independent reading</li>
           </ul>
           
           <h4 className="font-semibold mb-3">Writing</h4>
           <ul className="list-disc pl-5 mb-4 space-y-1">
-            <li>Creative writing</li>
-            <li>Descriptive writing</li>
-            <li>Letter and email writing</li>
-            <li>Story structure and planning</li>
-            <li>Grammar and punctuation</li>
+            <li>Sentence structure and paragraphing</li>
+            <li>Essay writing (narrative, descriptive, expository)</li>
+            <li>Formal and informal letter writing</li>
+            <li>Grammar, punctuation, and spelling</li>
+            <li>Creative writing techniques</li>
           </ul>
           
           <h4 className="font-semibold mb-3">Speaking & Listening</h4>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Group discussions</li>
-            <li>Presentations</li>
-            <li>Drama and role-play</li>
+            <li>Oral presentations and public speaking</li>
+            <li>Group discussions and debates</li>
+            <li>Drama and role-play activities</li>
+            <li>Listening comprehension</li>
+            <li>Questioning and answering techniques</li>
           </ul>
         </div>
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Reading</h4>
@@ -68,7 +70,7 @@ export default function EnglishPage() {
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Reading</h4>
@@ -99,7 +101,7 @@ export default function EnglishPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Reading</h4>

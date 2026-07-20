@@ -6,53 +6,53 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function HistoryPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
-          <h4 className="font-semibold mb-3">Medieval England</h4>
+          <h4 className="font-semibold mb-3">Ancient Civilisations</h4>
           <ul className="list-disc pl-5 mb-4 space-y-1">
-            <li>The Norman Conquest</li>
-            <li>Medieval society and life</li>
-            <li>Castles and warfare</li>
-            <li>Religion and the Church</li>
-            <li>The Black Death</li>
+            <li>Early human societies and migrations</li>
+            <li>Ancient Egyptian civilisation</li>
+            <li>Nok culture and early West African societies</li>
+            <li>Trade and trans-Saharan routes</li>
+            <li>Introduction to historical enquiry</li>
           </ul>
           
           <h4 className="font-semibold mb-3">Historical Skills</h4>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Source analysis</li>
-            <li>Cause and consequence</li>
+            <li>Source analysis and evaluation</li>
             <li>Chronological understanding</li>
-            <li>Historical enquiry</li>
+            <li>Cause and consequence</li>
+            <li>Historical enquiry and research</li>
           </ul>
         </div>
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
-          <h4 className="font-semibold mb-3">Early Modern Period</h4>
+          <h4 className="font-semibold mb-3">Pre-Colonial & Colonial Nigeria</h4>
           <ul className="list-disc pl-5 mb-4 space-y-1">
-            <li>Tudor England</li>
-            <li>The English Civil War</li>
-            <li>Industrial Revolution</li>
-            <li>British Empire</li>
+            <li>Early Nigerian kingdoms and empires (Benin, Oyo, Ife, Kanem-Bornu)</li>
+            <li>Trade and migration patterns</li>
+            <li>European contact and trade</li>
             <li>Transatlantic slave trade</li>
+            <li>British colonial administration</li>
           </ul>
           
           <h4 className="font-semibold mb-3">Historical Skills</h4>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Evidence evaluation</li>
-            <li>Interpretation and significance</li>
-            <li>Historical argument</li>
-            <li>Research skills</li>
+            <li>Evidence evaluation and interpretation</li>
+            <li>Historical significance</li>
+            <li>Constructing historical arguments</li>
+            <li>Research and presentation skills</li>
           </ul>
         </div>
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Modern World History</h4>
@@ -75,7 +75,7 @@ export default function HistoryPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">GCSE History</h4>

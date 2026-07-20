@@ -38,6 +38,9 @@ const pageContent = {
     title: 'Academics',
     subtitle: 'Structured pathways from foundational learning to senior secondary success.',
     cta: { href: '/apply', label: 'Start an Application' },
+    heroImages: [
+      '/images/School Photos/the-library.jpg',
+    ],
     sections: [
       {
         id: 'curriculum',

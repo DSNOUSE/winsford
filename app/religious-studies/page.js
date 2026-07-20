@@ -6,7 +6,7 @@ import InnerPageHero from '../../components/InnerPageHero'
 export default function ReligiousStudiesPage() {
   const curriculumItems = [
     {
-      title: 'Year 7',
+      title: 'JSS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Introduction to Religion</h4>
@@ -29,7 +29,7 @@ export default function ReligiousStudiesPage() {
       ),
     },
     {
-      title: 'Year 8',
+      title: 'JSS 2',
       content: (
         <div>
           <h4 className="font-semibold mb-3">World Religions</h4>
@@ -51,7 +51,7 @@ export default function ReligiousStudiesPage() {
       ),
     },
     {
-      title: 'Year 9',
+      title: 'JSS 3',
       content: (
         <div>
           <h4 className="font-semibold mb-3">Ethical Issues</h4>
@@ -73,7 +73,7 @@ export default function ReligiousStudiesPage() {
       ),
     },
     {
-      title: 'Year 10',
+      title: 'SS 1',
       content: (
         <div>
           <h4 className="font-semibold mb-3">GCSE Religious Studies</h4>

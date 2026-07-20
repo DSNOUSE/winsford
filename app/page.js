@@ -17,6 +17,7 @@ const heroImages = [
 
 export default function HomePage() {
   const [currentImage, setCurrentImage] = useState(0)
+  const [campusImage, setCampusImage] = useState(0)
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   useEffect(() => {
@@ -63,14 +64,14 @@ export default function HomePage() {
   const programs = [
     {
       title: 'Basic Education',
-      subtitle: 'Years 1-9',
+      subtitle: 'Nursery, Primary & JSS',
       description: 'Foundation for excellence with comprehensive Nigerian curriculum',
       features: ['BECE Preparation', 'Holistic Development', 'Modern Facilities'],
       icon: 'school',
     },
     {
       title: 'Senior Secondary',
-      subtitle: 'Years 10-12',
+      subtitle: 'SS 1 - SS 3',
       description: 'Advanced preparation for tertiary education and career success',
       features: ['WASSCE Preparation', 'Career Guidance', 'Leadership Programs'],
       icon: 'assignment',
@@ -224,25 +225,78 @@ export default function HomePage() {
                     <br />
                     <span className="font-normal">Principal</span>
                   </h3>
-                  <div className="relative w-40 h-48 rounded-lg overflow-hidden">
+                  <div className="relative w-64 h-80 rounded-lg overflow-hidden">
                     <Image
                       src="/images/staff/principal.png"
                       alt="Principal Portrait"
                       fill
                       className="object-cover"
-                      sizes="160px"
+                      sizes="256px"
                     />
                   </div>
                 </div>
               </div>
-              <div className="relative min-h-[600px] rounded-lg overflow-hidden">
-                <Image
-                  src="/images/school-gate.png"
-                  alt="Winsford Schools Main Gate"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+              <div className="relative min-h-[600px] rounded-lg overflow-hidden group">
+                {[
+                  '/images/School Photos/bus-school-front.jpeg',
+                  '/images/School Photos/nursery-verview.jpeg',
+                  '/images/School Photos/nursery-ariel.jpeg',
+                  '/images/School Photos/secondary-front.jpeg',
+                  '/images/School Photos/school-bus.jpeg',
+                ].map((src, index) => (
+                  <div
+                    key={src}
+                    className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                    style={{ opacity: campusImage === index ? 1 : 0 }}
+                  >
+                    <Image
+                      src={src}
+                      alt="Winsford Schools Campus"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+                
+                {/* Navigation Arrows */}
+                <div className="absolute bottom-4 right-4 flex gap-2">
+                  <button
+                    onClick={() => setCampusImage((prev) => (prev - 1 + 5) % 5)}
+                    className="bg-white/90 hover:bg-white text-[#002d5f] w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors duration-200"
+                    aria-label="Previous image"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setCampusImage((prev) => (prev + 1) % 5)}
+                    className="bg-white/90 hover:bg-white text-[#002d5f] w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors duration-200"
+                    aria-label="Next image"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Dot Indicators */}
+                <div className="absolute bottom-4 left-4 flex gap-2">
+                  {[0, 1, 2, 3, 4].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCampusImage(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        campusImage === index 
+                          ? 'bg-white w-6' 
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
