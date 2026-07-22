@@ -123,6 +123,10 @@ export default function ArtPage() {
         <InnerPageHero
           title="Art"
           subtitle="Developing creativity, artistic skills and visual literacy through practical and theoretical study"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

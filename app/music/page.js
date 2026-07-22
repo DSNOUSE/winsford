@@ -125,6 +125,10 @@ export default function MusicPage() {
         <InnerPageHero
           title="Music"
           subtitle="Developing musical creativity, performance skills and appreciation through practical and theoretical study"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

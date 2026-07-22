@@ -125,6 +125,10 @@ export default function DesignTechnologyPage() {
         <InnerPageHero
           title="Design & Technology"
           subtitle="Developing creativity and practical skills through design, making and evaluation"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">
