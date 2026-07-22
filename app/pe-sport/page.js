@@ -107,6 +107,10 @@ export default function PESportPage() {
         <InnerPageHero
           title="PE & Sport Sciences"
           subtitle="Developing physical literacy, sporting skills and understanding of sports science"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

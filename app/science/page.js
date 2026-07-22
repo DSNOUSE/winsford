@@ -135,6 +135,10 @@ export default function SciencePage() {
         <InnerPageHero
           title="Science"
           subtitle="Exploring the natural world through biology, chemistry and physics with practical investigation and scientific inquiry"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

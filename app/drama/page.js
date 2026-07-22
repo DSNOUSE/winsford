@@ -107,6 +107,10 @@ export default function DramaPage() {
         <InnerPageHero
           title="Drama"
           subtitle="Developing creativity, confidence and communication skills through performance and theatrical study"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

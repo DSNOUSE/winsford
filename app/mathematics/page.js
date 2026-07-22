@@ -139,6 +139,10 @@ export default function MathematicsPage() {
         <InnerPageHero
           title="Mathematics"
           subtitle="Developing mathematical reasoning and problem-solving skills through a comprehensive curriculum"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

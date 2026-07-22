@@ -21,9 +21,9 @@ export default function TeachersPortalPage() {
                 If you already have credentials, continue to portal access. For support, contact the school office.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" className="btn-primary">
+                <Link href="/portal/signin" className="btn-primary">
                   Portal Login
-                </a>
+                </Link>
                 <Link href="/contact" className="btn-secondary">
                   Contact School Office
                 </Link>

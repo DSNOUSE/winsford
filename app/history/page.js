@@ -107,6 +107,10 @@ export default function HistoryPage() {
         <InnerPageHero
           title="History"
           subtitle="Understanding the past to make sense of the present through the study of significant events and periods"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

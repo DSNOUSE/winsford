@@ -104,6 +104,10 @@ export default function GeographyPage() {
         <InnerPageHero
           title="Geography"
           subtitle="Exploring the relationship between people and their environments through physical and human geography"
+          heroImages={[
+            '/images/School Photos/the-library.jpg',
+          ]}
+        
         />
         
         <section className="section-padding bg-white">

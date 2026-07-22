@@ -114,15 +114,16 @@ model User {
 }
 
 model Student {
-  id         String   @id @default(cuid())
-  userId     String   @unique
-  firstName  String
-  lastName   String
-  classId    String?
-  parentId   String?
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  class      Class?   @relation(fields: [classId], references: [id])
-  parent     Parent?  @relation(fields: [parentId], references: [id])
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  admissionNumber  String?  @unique
+  firstName        String
+  lastName         String
+  classId          String?
+  parentId         String?
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  class            Class?   @relation(fields: [classId], references: [id])
+  parent           Parent?  @relation(fields: [parentId], references: [id])
 
   @@map("students")
 }
