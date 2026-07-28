@@ -141,9 +141,7 @@ export default function EnglishPage() {
         <InnerPageHero
           title="English"
           subtitle="Developing literacy, communication skills and literary appreciation through reading, writing and spoken language"
-          heroImages={[
-            '/images/School Photos/the-library.jpg',
-          ]}
+          heroImages={[]}
         
         />
         

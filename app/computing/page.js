@@ -124,9 +124,7 @@ export default function ComputingPage() {
         <InnerPageHero
           title="Computing"
           subtitle="Developing digital literacy, programming skills and understanding of computer systems"
-          heroImages={[
-            '/images/School Photos/the-library.jpg',
-          ]}
+          heroImages={[]}
         
         />
         

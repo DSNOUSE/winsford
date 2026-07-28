@@ -12,7 +12,6 @@ import Image from 'next/image'
 
 const heroImages = [
   '/images/School Photos/hero-image.png',
-  '/images/hero-image-2.png',
 ]
 
 export default function HomePage() {
@@ -33,31 +32,32 @@ export default function HomePage() {
     { label: 'Qualified Teachers', value: '50+', icon: 'school' },
   ]
 
+
   const coreValues = [
     {
       title: 'Academic Excellence',
       description: 'Rigorous curriculum with proven results in national examinations',
-      image: '/images/academic-excellence-senior.png',
+      image: '/images/School Photos/secondary-front.jpeg',
     },
     {
       title: 'Character Development',
       description: 'Building leaders with integrity and moral values',
-      image: '/images/character-development.png',
+      image: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg',
     },
     {
       title: 'Innovation in Learning',
       description: 'Modern teaching methodologies and technology integration',
-      image: '/images/senior-innovation.png',
+      image: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg',
     },
     {
       title: 'Community Spirit',
       description: 'Fostering collaboration, respect, and social responsibility',
-      image: '/images/community-spirit.png',
+      image: '/images/School Photos/bus-school-front.jpeg',
     },
     {
       title: 'Global Readiness',
       description: 'Preparing students for tomorrow\'s challenges and opportunities',
-      image: '/images/global-readiness.png',
+      image: '/images/School Photos/nursery-verview.jpeg',
     },
   ]
 
@@ -336,8 +336,35 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Our Programmes */}
+        {/* 4. Our Core Values */}
         <section className="section-padding bg-white">
+          <div className="container">
+            <SectionHeading
+              title="Our Core Values"
+              subtitle="The principles that guide everything we do at Winsford Schools"
+            />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {coreValues.map((value, index) => (
+                <div key={index} className="text-center">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={value.image}
+                      alt={value.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#002d5f] mb-2">{value.title}</h3>
+                  <p className="text-sm text-gray-600">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Our Programmes */}
+        <section className="section-padding bg-gray-50">
           <div className="container">
             <SectionHeading
               title="Our Curriculum"
@@ -364,11 +391,12 @@ export default function HomePage() {
               subtitle="Modern learning environments designed to inspire and support student success"
             />
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
               {[
-                { src: '/images/School Photos/students-library.png', title: 'Library & Resource Centre', description: 'A well-stocked library for research and independent learning' },
+                { src: '/images/School Photos/secondary-front.jpeg', title: 'Library & Resource Centre', description: 'A well-stocked library for research and independent learning' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', title: 'Science Laboratories', description: 'Fully equipped labs for practical science experiments' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', title: 'Music & Arts Studios', description: 'Creative spaces for artistic expression and performance' },
-                { src: '/images/School Photos/students-running.png', title: 'Sports Facilities', description: 'Running track, fields, and courts for physical education' },
+                { src: '/images/School Photos/secondary-front.jpeg', title: 'Sports Facilities', description: 'Running track, fields, and courts for physical education' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', title: 'Practical Workshops', description: 'Hands-on learning spaces for technical and vocational skills' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', title: 'Assembly & Events Hall', description: 'A spacious hall for ceremonies, events, and gatherings' },
               ].map((facility, index) => (
@@ -386,44 +414,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. Latest News */}
-        <section className="section-padding relative">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/hero.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-white/85"></div>
-          </div>
-          <div className="container relative">
-            <SectionHeading
-              title="Latest News"
-              subtitle="Celebrating achievements and sharing our latest updates"
-            />
-            <div className="grid lg:grid-cols-2 gap-8">
-              {newsItems.map((news, index) => (
-                <NewsCard
-                  key={index}
-                  title={news.title}
-                  excerpt={news.excerpt}
-                  date={news.date}
-                  category={news.category}
-                  href={`/news/${index}`}
-                />
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link href="/news" className="btn-primary">
-                View All News
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. Upcoming Events */}
+        {/* 6. Upcoming Events */}
         <section className="section-padding bg-white">
           <div className="container">
             <SectionHeading
@@ -458,23 +449,23 @@ export default function HomePage() {
           <div className="mt-4 relative overflow-hidden">
             <div className="flex animate-scroll gap-6">
               {[
-                { src: '/images/School Photos/students-library.png', alt: 'Students reading in the library' },
-                { src: '/images/School Photos/students-running.png', alt: 'Students on the running track' },
+                { src: '/images/School Photos/secondary-front.jpeg', alt: 'Students reading in the library' },
+                { src: '/images/School Photos/nursery-ariel.jpeg', alt: 'Students on campus' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', alt: 'Hands-on practical activity' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', alt: 'Music class' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', alt: 'Graduation ceremony' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', alt: 'Science laboratory' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.53 PM (2).jpeg', alt: 'Sports achievement' },
-                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.50 PM (1).jpeg', alt: 'School assembly' },
+                { src: '/images/School Photos/bus-school-front.jpeg', alt: 'School assembly' },
               ].concat([
-                { src: '/images/School Photos/students-library.png', alt: 'Students reading in the library' },
-                { src: '/images/School Photos/students-running.png', alt: 'Students on the running track' },
+                { src: '/images/School Photos/secondary-front.jpeg', alt: 'Students reading in the library' },
+                { src: '/images/School Photos/nursery-ariel.jpeg', alt: 'Students on campus' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.39 PM.jpeg', alt: 'Hands-on practical activity' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.44 PM.jpeg', alt: 'Music class' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.48 PM.jpeg', alt: 'Graduation ceremony' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.51 PM (2).jpeg', alt: 'Science laboratory' },
                 { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.53 PM (2).jpeg', alt: 'Sports achievement' },
-                { src: '/images/School Photos/WhatsApp Image 2026-06-22 at 4.42.50 PM (1).jpeg', alt: 'School assembly' },
+                { src: '/images/School Photos/bus-school-front.jpeg', alt: 'School assembly' },
               ]).map((photo, index) => (
                 <div key={index} className="relative flex-shrink-0 w-[400px] h-[280px] rounded-xl overflow-hidden shadow-lg border-2 border-white/20">
                   <Image

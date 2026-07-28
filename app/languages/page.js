@@ -107,9 +107,7 @@ export default function LanguagesPage() {
         <InnerPageHero
           title="Languages"
           subtitle="Developing linguistic competence and cultural understanding through modern foreign languages"
-          heroImages={[
-            '/images/School Photos/the-library.jpg',
-          ]}
+          heroImages={[]}
         
         />
         
