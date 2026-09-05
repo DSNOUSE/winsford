@@ -148,3 +148,32 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verification_tokens")
 }
+
+model Application {
+  id                String   @id @default(cuid())
+  firstName         String
+  lastName          String
+  dob               DateTime
+  gender            String
+  grade             String
+  previousSchool    String?
+  parentName        String
+  relationship      String
+  email             String
+  phone             String
+  address           String
+  lastSchool        String
+  lastGrade         String
+  averageMarks      String?
+  medical           String?
+  interests         String?
+  motivation        String
+  declaration1      Boolean
+  declaration2      Boolean
+  declaration3      Boolean
+  status            String   @default("pending") // "pending", "reviewed", "accepted", "rejected"
+  submittedAt       DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("applications")
+}

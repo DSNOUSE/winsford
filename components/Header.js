@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icon } from './icons'
+import TopNav from './TopNav'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -82,10 +83,10 @@ export default function Header() {
       name: 'Admissions', 
       href: '/admissions',
       dropdown: [
-        { name: 'Why Choose Winsford', href: '/admissions#why' },
-        { name: 'Admission Process', href: '/admissions#process' },
-        { name: 'Fees & Payments', href: '/admissions#fees' },
-        { name: 'Scholarships', href: '/admissions#scholarships' },
+        { name: 'Admission Process', href: '/admissions' },
+        { name: 'Apply Now', href: '/apply' },
+        { name: 'Fees & Payments', href: '/admissions' },
+        { name: 'Scholarships', href: '/admissions' },
       ]
     },
     {
@@ -110,10 +111,14 @@ export default function Header() {
   ]
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container px-6">
-        {/* Main Navigation */}
-        <div className="flex justify-between items-center py-6">
+    <header className="relative z-50">
+      {/* Top Navigation Bar */}
+      <TopNav />
+      
+      {/* Main Navigation */}
+      <div className="absolute top-8 left-0 right-0 bg-transparent">
+        <div className="container px-6">
+          <div className="flex justify-between items-center py-6">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
@@ -329,6 +334,7 @@ export default function Header() {
             </nav>
           </div>
         )}
+        </div>
       </div>
     </header>
   )

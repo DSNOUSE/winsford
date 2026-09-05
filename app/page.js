@@ -12,6 +12,8 @@ import Image from 'next/image'
 
 const heroImages = [
   '/images/School Photos/hero-image.png',
+  '/images/School Photos/hero-nursery.png',
+  '/images/School Photos/sport-day-trophy.jpg',
 ]
 
 export default function HomePage() {
@@ -511,11 +513,14 @@ export default function HomePage() {
           <div className="container text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Admissions Are Now Open</h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Secure your child&apos;s place at Winsford Schools for the upcoming academic session.
+              Secure your child&apos;s place at Winsford Schools for the upcoming academic session through our comprehensive 7-step admission process.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/apply" className="bg-white text-red px-8 py-3 font-semibold hover:bg-gray-100 transition-colors duration-200">
                 Apply Now
+              </Link>
+              <Link href="/admissions" className="border-2 border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-red transition-colors duration-200">
+                View Admission Process
               </Link>
               <Link href="/enquire" className="border-2 border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-red transition-colors duration-200">
                 Contact Us

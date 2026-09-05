@@ -86,7 +86,7 @@ export default async function TeacherPage({ params }) {
               {teacher.assignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="border-l-4 border-blue-600 pl-6 py-4 bg-gray-50 rounded"
+                  className="pl-6 py-4 bg-gray-50 rounded"
                 >
                   <h3 className="text-xl font-semibold text-gray-900">
                     {assignment.class.name}
