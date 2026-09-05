@@ -150,7 +150,7 @@ export default function AdmissionsPage() {
                 Your Journey to Excellence
               </h2>
               <p className="text-lg text-gray-700 mb-8">
-                At Winsford Group of Schools, we've designed a transparent and thorough admission process 
+                At Winsford Group of Schools, we&apos;ve designed a transparent and thorough admission process 
                 to ensure every student finds their place in our community of learners. Our 7-step process 
                 guides you from application to enrollment with clarity and support.
               </p>
@@ -421,8 +421,8 @@ export default function AdmissionsPage() {
                   
                   <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                     <p className="text-sm text-yellow-800">
-                      <strong>Important:</strong> Please include the student's name as payment reference when making the transfer. 
-                      Send payment confirmation to info@winsfordschools.com
+                      <strong>Important:</strong> Please include the student&apos;s name as payment reference when making the transfer. 
+                      Send payment confirmation to winsfordoffice@gmail.com
                     </p>
                   </div>
                   

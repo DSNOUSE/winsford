@@ -135,7 +135,7 @@ const pageContent = {
       },
       {
         heading: 'Phone and Email',
-        body: 'Call 0803 517 2002, 0803 402 7586, or 0703 579 7152, or email info@winsfordschools.com.ng for direct assistance from our school office.',
+        body: 'Call 0803 517 2002, 0803 402 7586, or 0703 579 7152, or email winsfordoffice@gmail.com for direct assistance from our school office.',
       },
       {
         heading: 'Office Hours',

@@ -84,7 +84,7 @@ export default function EnquirePage() {
                     <p className="text-gray-600">0803 517 2002 / 0803 402 7586 / 0703 579 7152</p>
                   </ContactCard>
                   <ContactCard icon="email" title="Email">
-                    <p className="text-gray-600">info@winsfordschools.com.ng</p>
+                    <p className="text-gray-600">winsfordoffice@gmail.com</p>
                   </ContactCard>
                 </div>
               </div>

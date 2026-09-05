@@ -52,11 +52,11 @@ export default function TopNav() {
               <span className="hidden md:inline">+234 812 345 6789</span>
             </a>
             <a 
-              href="mailto:info@winsfordschools.com" 
+              href="mailto:winsfordoffice@gmail.com" 
               className="flex items-center space-x-2 hover:text-sky-blue transition-colors duration-200"
             >
               <Icon name="email" color="white" size={16} />
-              <span className="hidden md:inline">info@winsfordschools.com</span>
+              <span className="hidden md:inline">winsfordoffice@gmail.com</span>
             </a>
           </div>
         </div>

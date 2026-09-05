@@ -48,7 +48,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Icon name="email" color="sky-blue" className="mr-3" />
-                  <span>info@winsfordschools.com.ng</span>
+                  <span>winsfordoffice@gmail.com</span>
                 </div>
               </div>
 
