@@ -135,7 +135,7 @@ export default function ApplyPage() {
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Basic Requirements:</h3>
                   <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• Age 10-18 years</li>
+                    
                     <li>• Completed previous grade level</li>
                     <li>• Birth certificate</li>
                     <li>• Previous school transcripts</li>
