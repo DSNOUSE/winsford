@@ -8,8 +8,7 @@ const pageContent = {
     cta: { href: '/enquire', label: 'Speak with Admissions' },
     sectionsLayout: '2x2',
     heroImages: [
-      '/images/School Photos/students-library.png',
-      '/images/School Photos/students-running.png',
+      '/images/School Photos/secondary-front.jpeg',
     ],
     sections: [
       {
@@ -38,9 +37,7 @@ const pageContent = {
     title: 'Academics',
     subtitle: 'Structured pathways from foundational learning to senior secondary success.',
     cta: { href: '/apply', label: 'Start an Application' },
-    heroImages: [
-      '/images/School Photos/the-library.jpg',
-    ],
+    heroImages: [],
     sections: [
       {
         id: 'curriculum',
@@ -138,7 +135,7 @@ const pageContent = {
       },
       {
         heading: 'Phone and Email',
-        body: 'Call 0803 517 2002, 0803 402 7586, or 0703 579 7152, or email info@winsfordschools.com.ng for direct assistance from our school office.',
+        body: 'Call 0803 517 2002, 0803 402 7586, or 0703 579 7152, or email winsfordoffice@gmail.com for direct assistance from our school office.',
       },
       {
         heading: 'Office Hours',

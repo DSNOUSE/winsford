@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import FormInput from '../../components/FormInput'
@@ -77,12 +78,31 @@ export default function ApplyPage() {
     setCurrentStep(prev => Math.max(prev - 1, 1))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (validateStep(3)) {
-      console.log('Application submitted:', formData)
-      alert('Application submitted successfully! You will receive a confirmation email within 24-48 hours.')
-      // Here you would typically send the data to your backend
+      try {
+        const response = await fetch('/api/applications', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+          console.log('Application submitted successfully:', data)
+          // Redirect to thank you page
+          window.location.href = '/thank-you'
+        } else {
+          alert(`Error: ${data.error || 'Failed to submit application'}`)
+        }
+      } catch (error) {
+        console.error('Error submitting application:', error)
+        alert('An error occurred while submitting your application. Please try again.')
+      }
     } else {
       alert('Please complete all required fields and declarations.')
     }
@@ -107,12 +127,15 @@ export default function ApplyPage() {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="bg-sky-blue/10 p-6 mb-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">Admission Requirements</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-3">Admission Process Overview</h2>
+              <p className="text-sm text-gray-700 mb-4">
+                This application is Step 1 of our 7-step admission process. After submitting this form, you will be guided through:
+              </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Basic Requirements:</h3>
                   <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• Age 10-18 years</li>
+                    
                     <li>• Completed previous grade level</li>
                     <li>• Birth certificate</li>
                     <li>• Previous school transcripts</li>
@@ -127,6 +150,12 @@ export default function ApplyPage() {
                     <li>• Parent/Guardian ID</li>
                   </ul>
                 </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-sky-blue/30">
+                <p className="text-sm text-gray-700">
+                  <strong>Next Steps:</strong> After submission, pay the ₦5,000 admission fee, then attend the entrance examination. 
+                  <Link href="/admissions" className="text-red hover:underline ml-1">View full process →</Link>
+                </p>
               </div>
             </div>
 
@@ -408,7 +437,35 @@ export default function ApplyPage() {
               </form>
             </div>
 
-            <div className="mt-12 text-center">
+            <div className="mt-12 bg-red text-white p-6 rounded-lg">
+              <h2 className="text-xl font-semibold mb-3">Admission Fee Information</h2>
+              <p className="text-white/90 mb-4">
+                After submitting your application, the next step is to pay the non-refundable admission fee of ₦5,000.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="font-semibold mb-1">Fee Covers:</p>
+                  <ul className="space-y-1 text-white/80">
+                    <li>• Entrance examination</li>
+                    <li>• Admission processing</li>
+                    <li>• Administrative costs</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold mb-1">Payment Methods:</p>
+                  <ul className="space-y-1 text-white/80">
+                    <li>• Bank transfer</li>
+                    <li>• Cash at school office</li>
+                    <li>• Online payment (coming soon)</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="text-sm text-white/80 mt-4">
+                Payment details will be sent to your email after application submission.
+              </p>
+            </div>
+
+            <div className="mt-8 text-center">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Need Help?</h2>
               <p className="text-gray-600 mb-6">
                 Our admissions team is here to assist you throughout the application process.

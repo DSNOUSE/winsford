@@ -104,9 +104,7 @@ export default function PersonalDevelopmentPage() {
         <InnerPageHero
           title="Personal Development"
           subtitle="Developing emotional intelligence, social skills and wellbeing for personal and academic success"
-          heroImages={[
-            '/images/School Photos/the-library.jpg',
-          ]}
+          heroImages={[]}
         
         />
         

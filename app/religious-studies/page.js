@@ -105,9 +105,7 @@ export default function ReligiousStudiesPage() {
         <InnerPageHero
           title="Religious Studies"
           subtitle="Exploring religious beliefs, practices and ethical issues to develop understanding and respect"
-          heroImages={[
-            '/images/School Photos/the-library.jpg',
-          ]}
+          heroImages={[]}
         
         />
         
